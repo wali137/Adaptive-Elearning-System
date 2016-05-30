@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.ForumPostReply" table="forum_post_reply" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="onDate" type="date">
+            <column name="onDate" length="10" />
+        </property>
+        <property name="onTime" type="time">
+            <column name="onTime" length="8" />
+        </property>
+        <property name="comment" type="string">
+            <column name="Comment" length="5000" />
+        </property>
+        <property name="postId" type="java.lang.Integer">
+            <column name="post_id" />
+        </property>
+    </class>
+</hibernate-mapping>

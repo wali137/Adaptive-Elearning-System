@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/afterdark/skin.css"/>
+        <link type="text/css" rel="stylesheet" href="css/my.css"/>
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 70% !important;
+        }
+       </style>
+    </h:head>
+    <h:body >
+        <font color="black">
+        <h:form>
+            <p:growl id="growl" showDetail="false" life="3000" />
+        <div class="heading" style="border-radius: 15px;float:left;background-color: black; width: 100%; height: 60px;">
+            <div  style=" float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                <b>Username : </b> <p:inputText value="#{acc.user.userName}" required="true" label="Username"></p:inputText> <b> Password : </b> <p:password value="#{acc.user.password}" required="true" label="Password"></p:password><div style="float:right;margin-left: 5px;"><p:commandButton value="Login" update="growl" actionListener="#{acc.check_user()}"></p:commandButton></div>
+                <br />
+                <div style="float: right;margin-right: 5px;">
+                    <font size="2">
+                    <a href="#" > Forget Password </a>
+                    </font>
+                </div>
+            </div>
+        </div>
+        </h:form>
+            
+            <div style="margin-left: 160px;width: 1000px;">
+            <div style="float: left;margin-left: 10px;margin-top: 50px; border: 1px solid black;">
+                <img src="img/cover.jpg" height="400" width="600"/>
+            </div>
+            <div class="waleed" style="float: right;margin-top: 120px; background-color: #afaeae;border-radius: 15px;width: 300px;">
+                <font color="black">
+                <div align="center"><h2>Register</h2></div>
+                
+                <div style="margin-top: 5px;margin-left: 15px;margin-right: 15px;margin-bottom: 5px;" >
+                    <h:form>
+                    <p:growl id="growl2" showDetail="false" life="3000" />
+                    <table>
+                        <tr>
+                            <td>
+                                <b>
+                                    First Name* : 
+                                </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{acc.user.firstName}" required="true" label="First Name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>
+                                    Last Name : 
+                                </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{acc.user.lastName}"  label="Last Name" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>
+                                    Date of Birth* : 
+                                </b>
+                            </td>
+                            <td>
+                                <p:calendar yearRange="1990-2030" value="#{acc.user.dob}" label="Date Of Birth" required="true"  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>
+                                    Email* : 
+                                </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{acc.user.email}" required="true" label="Email" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>
+                                    Password* : 
+                                </b>
+                            </td>
+                            <td>
+                                <p:password value="#{acc.user.password}" required="true" feedback="true" label="Password" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>
+                                    Repeat Password : 
+                                </b>
+                            </td>
+                            <td>
+                                <p:password value="#{acc.repeatPassword}" required="true" label="Repeat Password" />
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <div align="right">
+                                    <p:commandButton value="Sign Up" action="#{acc.registerStudent()}" update="growl2"  />
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    </h:form>
+                </div>
+                    
+                </font>
+            </div>
+            </div>
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 100px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

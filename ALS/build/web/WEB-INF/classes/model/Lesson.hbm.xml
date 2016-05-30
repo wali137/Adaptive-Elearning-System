@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Lesson" table="lesson" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="lessonName" type="string">
+            <column name="Lesson_Name" length="111" />
+        </property>
+        <property name="dateCreated" type="date">
+            <column name="Date_Created" length="10" />
+        </property>
+        <property name="createdBy" type="java.lang.Integer">
+            <column name="Created_By" />
+        </property>
+        <property name="duration" type="java.lang.Integer">
+            <column name="Duration" />
+        </property>
+        <property name="attachment" type="string">
+            <column name="Attachment" length="111" />
+        </property>
+        <property name="courseId" type="string">
+            <column name="Course_ID" length="111" />
+        </property>
+        <property name="preReqId" type="java.lang.Integer">
+            <column name="PreReq_ID" />
+        </property>
+        <property name="slideTime" type="java.lang.Integer">
+            <column name="Slide_Time" />
+        </property>
+        <property name="sectionId" type="java.lang.Integer">
+            <column name="Section_id" />
+        </property>
+        <property name="topicId" type="java.lang.Integer">
+            <column name="Topic_id" />
+        </property>
+        <property name="preTopicId" type="java.lang.Integer">
+            <column name="Pre_Topic_id" />
+        </property>
+    </class>
+</hibernate-mapping>

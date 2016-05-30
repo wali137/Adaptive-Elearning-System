@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       
+        
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style="" onload="#{assign.setCid(param.cid)};#{acc.check_session('student')};#{assign.setCourse_id(param.cid)};#{course_con.setCourseID(param.cid)};" >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                  <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+                
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                   <b>Name : </b> <a href="student.xhtml"> #{acc.currentUserName} #{acc.currentUserLastName}</a><br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                <div class="fsize" style=" font-size: 40%; width: 180px; height: auto; margin-bottom: 5px;margin-top: -160px;margin-left: 10px;font-size: 120% !important;">
+                    <h:form>
+                    <p:panelMenu  > 
+                    <p:submenu  label="Courses" style="font-size: 100% !important;">  
+                        <c:set var="c" value="#{course_con.studentCourses}" />
+                        <c:set var="cid" value="#{course_con.studentCoursesID}" />
+                            <c:forEach begin="0" end="#{course_con.studentCourses.size()-1}" var="i">
+                            <p:menuitem value="#{c[i]}" url="student_course.xhtml?cid=#{cid[i]}" style="font-size: 130% !important;"/>  
+                            </c:forEach>
+                    </p:submenu>
+                        <p:submenu label="Actions" style="font-size: 100% !important;">
+                            <p:menuitem value="Take Course" url="student_course_take.xhtml" style="font-size: 130% !important;"/>
+                            <p:menuitem value="My Standings" url="student_standing.xhtml" style="font-size: 130% !important;"/>
+                            
+                          </p:submenu>  
+                    <p:submenu label="Communicate" style="font-size: 100% !important;">      
+                        <p:menuitem value="Forums" url="forum.xhtml" style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Message Inbox"  style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Chat" style="font-size: 130% !important;"/>   
+                    </p:submenu>
+                    <p:submenu label="Settings" style="font-size: 100% !important;">      
+                        <p:menuitem value="Profile"  url="profile.xhtml?ID=#{acc.currentUserId}" style="font-size: 130% !important;"/>
+                        <p:menuitem value="Change Password"  url="profile_password.xhtml?ID=#{acc.currentUserId}" style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Scheduling"  url="student_timetable.xhtml" style="font-size: 130% !important;"/>  
+                    </p:submenu>                                                                        
+                    </p:panelMenu> 
+                    </h:form>
+                </div>
+                    
+                </div>
+                </div>
+                
+                
+                
+                <div class="waleed" style="float: left; width: 1000px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px;">
+                    <h:form>
+                        <p:growl id="messages" showDetail="false" />
+                    <div align="center">
+                    <div style="background-color:  #78bbe6; border-radius: 5px;"><font size="6">#{course_con.courseName}<br /><font size="4">View Assignments</font></font></div>
+                    </div>
+                        <div align="center">
+                            
+                            <c:set var="asize" value="#{assign.submissions.size()}" />
+                            
+                            <c:if test="#{asize == 0}">
+                            No new assignment found...
+                            </c:if>
+        
+                               
+                            <c:set var="aa" value="#{assign.submissions}" />
+                                <c:forEach var="i" begin="0" end="#{assign.submissions.size()-1}">
+                                    <c:set var="a" value="#{aa[i]}" />
+        <div id ="paper" style="margin-bottom: 5px; margin-top: 5px;border-radius: 15px; height: auto; width: 700px; background-color: #dddddd;">
+                            <div  align="left" style="margin-top: 5px;margin-left: 5px;margin-bottom: 10px;"> 
+                                <img  src="img/chat.png" height="30" width="30" />
+                                <b> #{a[1]} </b>  
+                                <div align="right" style="float: right;margin-right: 10px;margin-top: 0px;margin-bottom: 10px;"> 
+                                    
+          
+                    <p:commandButton value="Submit"  onclick="window.location='student_course_assignment_view_submit.xhtml?ID=#{a[0]}'"/>
+                                    </div><div style="margin-right: 50px;float: right;">
+                                        <img  src="img/comment.png" height="20" width="20" /> #{a[3]} 
+                                         <f:viewParam name="token" value="#{assign.setCreatedBy(a[7])}" />
+                                        <img  src="img/edit.png" height="20" width="20" />#{assign.createdBy}  
+                                        <img  src="img/date.png" height="20" width="20" /> #{a[4]} 
+                                    </div></div>
+                        </div>
+
+    </c:forEach>
+   
+</div>
+                        <div align="right" style="margin-right: 150px;">
+                            <p:commandButton value="Back" actionListener="#{assign.back_to_menu()}" /> 
+                        </div>
+           </h:form>
+                </div>
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

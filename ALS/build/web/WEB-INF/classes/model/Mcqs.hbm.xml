@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Mcqs" table="mcqs" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="questionId" type="int">
+            <column name="question_id" not-null="true" />
+        </property>
+        <property name="answers" type="string">
+            <column name="answers" length="45" />
+        </property>
+        <property name="correctAnswer" type="string">
+            <column name="correct_answer" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

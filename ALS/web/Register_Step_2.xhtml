@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/afterdark/skin.css"/>
+        <link type="text/css" rel="stylesheet" href="css/my.css"/>
+        <style type="text/css">
+       
+       </style>
+    </h:head>
+    <h:body >
+        <font color="black">
+        <h:form>
+            <p:growl id="growl" showDetail="false" life="3000" />
+        <div class="heading" style="border-radius: 15px;float:left;background-color: black; width: 100%; height: 60px;">
+            <div  style=" float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            
+        </div>
+        </h:form>
+            
+            <div style="margin-left: 70px;width: 1000px; height: 500px;">
+            
+            <div class="waleed" style="float: right;margin-top: 120px; background-color: #afaeae;border-radius: 15px;width: 700px;">
+                <font color="black">
+                <div align="center"><h2>Profile Picture Upload</h2></div>
+                
+                <f:viewParam name="token" value="#{acc.setRedirect(param.ID)}" />
+                
+                <div style="margin-top: 5px;margin-left: 15px;margin-right: 15px;margin-bottom: 5px;" >
+                    <h:form enctype="multipart/form-data">
+                    <p:growl id="growl2" showDetail="false" life="3000" />
+                    
+                    <div align="center" style="border: 2px solid black;">
+                        <img src="data/user/#{acc.currentUserEmail}.jpg" width="300" height="300" />
+                    </div>
+                    <br />
+                    <f:viewParam name="token" value="#{acc.setImgName(acc.currentUserEmail)}" />
+                    
+                                <p:fileUpload fileUploadListener="#{acc.uploadFile}" style="font-size: 100% !important;"  
+                                mode="advanced"   
+                                update="messages"  
+                                sizeLimit="1000000000" 
+                                auto="true"
+                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>  
+  
+                                <p:growl id="messages" showDetail="true"/> 
+
+                    </h:form>
+                </div>
+                    
+                </font>
+                
+                <div align="right" style="margin-right: 10px;">
+                    <p:commandButton value="Next" onclick="window.location='Register_Step_3.xhtml?ID=#{param.ID}';"/>
+                </div>
+            </div>
+            </div>
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 100px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

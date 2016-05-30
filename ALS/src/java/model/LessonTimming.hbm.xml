@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.LessonTimming" table="lesson_timming" catalog="als">
+        <id name="lessonTimingId" type="java.lang.Integer">
+            <column name="`lesson-timing_id`" />
+            <generator class="identity" />
+        </id>
+        <property name="lessonId" type="string">
+            <column name="lesson_id" length="45" not-null="true" />
+        </property>
+        <property name="startedTime" type="string">
+            <column name="started_time" length="55" />
+        </property>
+        <property name="endTime" type="time">
+            <column name="end_time" length="8" />
+        </property>
+    </class>
+</hibernate-mapping>

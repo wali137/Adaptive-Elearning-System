@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProgramCreateDlg" widgetVar="ProgramCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateProgramTitle}">
+
+            <h:form id="ProgramCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <h:outputLabel value="#{bundle.CreateProgramLabel_programName}" for="programName" />
+                        <p:inputText id="programName" value="#{PROGbean.program.programName}" title="#{bundle.CreateProgramTitle_programName}" />
+
+                        <h:outputLabel value="#{bundle.CreateProgramLabel_departmentId}" for="departmentId" />
+                        <p:selectOneMenu  value="#{PROGbean.program.department.departmentId}" effect="fade" id="departmentId" >
+                          
+                            <f:selectItems value="#{PROGbean.getlist()}"/>
+                           </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{PROGbean.onCreate()}" value="#{bundle.Save}" update="display,:ProgramListForm:datalist" oncomplete="ProgramCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProgramCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

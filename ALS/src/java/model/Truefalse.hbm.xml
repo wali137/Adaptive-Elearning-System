@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Truefalse" table="truefalse" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="questionId" type="int">
+            <column name="question_id" not-null="true" />
+        </property>
+        <property name="trueAns" type="string">
+            <column name="true_ans" length="45" />
+        </property>
+        <property name="falseAns" type="string">
+            <column name="false_ans" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

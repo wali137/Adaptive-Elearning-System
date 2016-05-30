@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProgramEditDlg" widgetVar="ProgramEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditProgramTitle}">
+
+            <h:form id="ProgramEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2">
+
+                        <h:outputLabel value="#{bundle.EditProgramLabel_programId}" for="programId" />
+                        <h:outputText id="programId" value="#{PROGbean.modProgram.programId}" />
+
+                        <h:outputLabel value="#{bundle.EditProgramLabel_programName}" for="programName" />
+                        <p:inputText id="programName" value="#{PROGbean.modProgram.programName}" title="#{bundle.EditProgramTitle_programName}" />
+
+                        <h:outputLabel value="#{bundle.EditProgramLabel_departmentId}" for="departmentId" />
+                        <p:selectOneMenu id="departmentId" value="#{PROGbean.modProgram.department.departmentId}" >
+                          
+                            <f:selectItems value="#{PROGbean.getlist()}"/>
+                                          
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{PROGbean.onUpdate()}" value="#{bundle.Save}" update="display,:ProgramListForm:datalist" oncomplete="ProgramEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProgramEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

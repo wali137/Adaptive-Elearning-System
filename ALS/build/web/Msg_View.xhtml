@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style="" onload="#{msg.setFrom_id(param.ID)}"  >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+                
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                    <b>Name : </b> <a href="student.xhtml"> #{acc.currentUserName} #{acc.currentUserLastName}</a><br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                
+                    
+                </div>
+                </div> 
+                
+                 <div class="waleed" style="float: left; width: 800px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px;">
+            
+                
+        
+        <div class="waleed"  style="background-color: white; margin-bottom: 10px;border: 2px solid; float: right;margin-top: 30px;margin-right: 30px; width: 720px; height: auto;">
+                
+            <f:viewParam name="token" value="#{msg.setLogged_id(acc.currentUserId)}" />
+            <f:viewParam name="token" value="#{acc.setUser1(param.ID)}" />      
+                    <h:form>
+                    <div align="center">
+                        <div class="waleed2"><font size="6">Message Inbox</font></div>  
+                        <font size="6">From : #{acc.user1}</font>
+                        <c:set var="mm" value="#{msg.messages}" />
+                        <c:forEach begin="0" end="#{msg.messages.size()-1}" var="i">
+                        <c:set var="m" value="#{mm[i]}" />   
+                        <c:choose>
+                           <c:when test="#{m[6] != null}">
+                                <div class="waleed" style="float: right;margin-bottom: 5px;margin-left: 10px; margin-top: 5px;border-radius: 15px; height: auto; width: 600px; background-color: #dddddd;">
+                                <div  align="left" style="float: left;margin-top: 5px;margin-left: 5px; width: 680px;"> 
+                                <f:viewParam name="token" value="#{acc.setUser1(m[7])}" />
+                                <f:viewParam name="token" value="#{acc.setImageOfUser(m[7])}" />                                
+                                <img  src="#{acc.imageOfUser}" style="float: left;margin-top: 5px;" height="30" width="30" /> 
+                                <div align="right" style="float:right;margin-right: 100px;margin-top: 5px;">
+                                    #{m[3]} - #{m[4]}
+                                </div>                                
+                                <div style="float: left;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;">
+                                    <b> #{acc.user1} </b> : #{m[5]}
+                                </div> 
+                                </div>
+                                </div>
+                           </c:when>
+                           <c:otherwise>
+                                <div id ="paper" style="float: left;margin-bottom: 5px;margin-left: 10px; margin-top: 5px;border-radius: 15px; height: auto; width: 600px; background-color: #dddddd;">
+                                <div  align="left" style="float: left;margin-top: 5px;margin-left: 5px; width: 680px;"> 
+                                <f:viewParam name="token" value="#{acc.setUser1(m[7])}" />
+                                <f:viewParam name="token" value="#{acc.setImageOfUser(m[7])}" />
+                                
+                                <img  src="#{acc.imageOfUser}" style="float: left;margin-top: 5px;" height="30" width="30" /> 
+                                <div align="right" style="float:right;margin-right: 100px;margin-top: 5px;">
+                                    #{m[3]} - #{m[4]}
+                                </div>                                
+                                <div style="float: left;margin-top: 10px;margin-bottom: 10px;margin-left: 10px;">
+                                    <b> #{acc.user1} </b> : #{m[5]}
+                                </div> 
+                                </div>
+                                </div>      
+                           </c:otherwise>
+                        </c:choose>                        
+                        </c:forEach>
+                    </div>
+                    </h:form>
+            
+            <h:form>
+                <p:growl id="message" showDetail="false" />
+            <div id ="paper" style="float: left;margin-bottom: 5px;margin-left: 10px; margin-top: 5px;border-radius: 15px; height: auto; width: 700px; background-color: #dddddd;">
+            <table>
+                <tr>
+                                    <td>
+                        </td>
+                                    <td>
+                                        <p:inputTextarea style="width: 675px; height: 50px;" value="#{msg.msg.sentMessage}"/>
+                                        </td>
+                                </tr>
+            </table>
+                
+                <f:viewParam name="token" value="#{msg.msg.setToId(param.ID)}" />
+                <f:viewParam name="token" value="#{msg.msg.setReplyId(acc.currentUserId)}" />
+                
+                <div align="right" style="margin-right: 5px">
+                    <p:commandButton value="Reply" actionListener="#{msg.send()}" update="message"/>
+                </div>
+            </div>
+                </h:form>
+                    </div>
+    
+       
+  
+            </div> 
+                
+            
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

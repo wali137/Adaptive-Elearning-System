@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body id="bb" style="" onload="#{acc.check_session('admin')};#{admin_con.setttings(param.follow)};prof.hide();" >
+        
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+             <f:viewParam name="token" value="#{stchartBean.createLinearModel_Teacher()}" />
+             <f:viewParam name="token" value="#{stchartBean.setSID(2)}" />
+            
+            
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                    <b>Name : </b> #{acc.currentUserName} #{acc.currentUserLastName}<br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                <div class="fsize" style="font-size: 40%; width: 180px; height: auto; margin-bottom: 5px;margin-top: -160px;margin-left: 10px;font-size: 120% !important;">
+                    <h:form>
+                    <p:panelMenu > 
+                    
+                    <p:submenu label="institute" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create" url="AddInstitute.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Edit" url="editins.xhtml" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+                        
+                    <p:submenu label="department" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create" url="AddDepartment.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Edit" url="EditDep.xhtml" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+
+                    <p:submenu label="Program" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create" url="AddProgram.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Edit" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+
+                    <p:submenu label="Course" style="font-size: 100% !important;">      
+                    <p:menuitem value="Manage" url="admin_course.xhtml" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+    
+                    <p:submenu label="Teacher" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create"  url="admin_teacher.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Assign" url="admin_teacher_assign.xhtml" style="font-size: 150% !important;"/>                                                
+                    </p:submenu>
+                        
+                        <p:submenu label="Actions" style="font-size: 100% !important;">      
+                    <p:menuitem value="Students performance"  url="admin_performance.xhtml" style="font-size: 150% !important;"/>                      
+                    </p:submenu>
+                        
+                    <p:submenu label="Communicate" style="font-size: 100% !important;">      
+                    <p:menuitem value="Forums" url="forum.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Message Inbox" url="Msg.xhtml"  style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Chat" style="font-size: 150% !important;"/>   
+                    </p:submenu>
+                        
+                    <p:submenu label="Settings" style="font-size: 100% !important;">      
+                    <p:menuitem value="Profile"  url="profile.xhtml?ID=#{acc.currentUserId}" style="font-size: 150% !important;"/>
+                    <p:menuitem value="Change Password" url="profile_password.xhtml?ID=#{acc.currentUserId}"  style="font-size: 150% !important;"/>  
+                        
+                    </p:submenu>
+                        
+                        
+                        
+                    </p:panelMenu> 
+                    </h:form>
+                </div>
+                    
+                </div>
+                </div> 
+                
+                <div class="waleed" style="float: left; width: 800px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px;">
+                
+                
+                
+                
+                <h:form>
+                <div  style="margin-left: 0px;margin-top: 30px;margin-right: 20px;">
+                    
+                    <div  style="margin-left: 30px;"><h4>General Notifications</h4></div>
+                    <div  class="scroll" style="border: 2px black; overflow: auto;overflow-x: hidden;float:left;margin-left: 20px;margin-top: -15px;margin-bottom: 0px;margin-right: 10px; height:250px; width: 350px;">
+                        <c:set var="noti" value="#{acc.adminNoties}" />
+                        <c:forEach var="i" begin="0" end="#{acc.adminNoties.size()-1}">
+                    <div id ="paper"   style="margin-top: 5px;border-radius: 15px; height: auto; width: 320px; background-color: #78bbe6;">
+                        <div style="margin-top: 5px;margin-left: 5px;">  #{noti[i]} <div align="right" style="margin-right: 30px;">[3:21 PM - 1/1/2013] <a href="#" > View </a></div></div>
+                    </div>
+                            </c:forEach>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div style="margin-left: 450px;margin-top: -40px;">
+                        
+                        <h:panelGrid columns="1">  
+                        
+                        <p:barChart  id="basic22" value="#{stchartBean.linearModel_Teacher}" legendPosition="e"  
+                            title="Average Performance of Students"   min="0" max="10" style="width:340px;height:250px;" animate="true"/>  
+                        
+                        </h:panelGrid> 
+                    </div>
+                    
+                    
+                    
+                </div>
+                </h:form>
+                
+                
+                          <div align="center" class="waleed" style="float: left; width: 350px; height: 250px; background-color: white;border-radius: 15px;margin-top: 50px; margin-left: -360px;">
+                    <div style="margin-left: 10px;margin-top: 0px;"><h4>Follow Ups</h4></div>    
+                    <div style="margin-left: 20px;">
+                    
+                        <div style="background-color: white;height: 200px; width: 330px;margin-left: -10px;margin-top: -20px; margin-right: 10px;">
+                            <table>
+                                <tr>
+                                    <td>
+                                        User Type : 
+                                    </td>
+                                    <td>
+                                        <p:selectOneRadio  value="#{admin_con.u.userType}" required="true">  
+                                        <f:selectItem itemLabel="Teacher" itemValue="teacher" />  
+                                        <f:selectItem itemLabel="Student" itemValue="student" />  
+                                        </p:selectOneRadio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Course : 
+                                    </td>
+                                    <td>
+                                        <p:selectOneMenu value="#{admin_con.c.courseId}" effect="fold" editable="false" required="true" label="Selected Course">  
+                                            <c:set var="c" value="#{course_con.courseList}" />
+                                            <c:set var="cid" value="#{course_con.courseListID}" />
+                                        <c:forEach begin="0" end="#{course_con.courseList.size()-1}" var="i">
+                                        <f:selectItem itemLabel="#{c[i]}" itemValue="#{cid[i]}" />
+                                        </c:forEach>
+                                        </p:selectOneMenu> 
+                                    </td>
+                                    <tr>
+                                    <td>
+                                        Name : 
+                                    </td>
+                                    <td>
+                                        <p:inputText value="#{admin_con.u.firstName}" />
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            
+                                        </td>
+                                        <td>
+                                            <p:commandButton style="margin-left: 75px;" value="Search" actionListener="#{admin_con.setFollowUp()}">
+                                                <p:ajax event="click" listener="#{admin_con.setFollowUp()}" update="obj1" />
+                                            </p:commandButton>
+                                        </td>
+                                    </tr>
+                                </tr>
+                            </table>
+                            <hr />
+                            
+                            <div id="obj1" style="width: 300px; height: 300px; overflow: auto; overflow-x: hidden;">
+                                
+                            </div>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    </div>
+                
+                
+                
+                
+                
+                
+            </div>
+            
+                <div class="waleed" style="float: left; width: 260px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                    <div style="margin-left: 10px; margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" align="center">
+                    <p:calendar id="cal" value="#{acc.date1}" navigator="true" mode="inline"/> 
+                    </div>
+                    
+       
+                </div>
+                
+                
+                
+               
+                             
+                             <br />
+                             
+                              <div align="center" class="waleed" style="float: left; width: 260px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                    <div style="margin-left: 10px;margin-top: 0px;"><h4>Quick Navigations</h4></div>    
+                    <div style="margin-left: 20px;">
+                        
+                    <div class="waleed2" style="float:left; width: 80px;margin-bottom: 10px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;">
+                        <div align="center">
+                        <img src="img/msg.png" width="30" height="30" />
+                        <br />
+                            Messages
+                        </div>
+                    </div>
+                   
+                    
+                    <div class="waleed2" style="float:left; width: 80px;margin-bottom: 10px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;">
+                        <div align="center">
+                        <img src="img/forum.png" width="30" height="30" />
+                        <br />
+                            Forum
+                        </div>
+                    </div>
+                    
+                    <br />
+                    
+                    
+                    
+                    <div class="waleed2" style="float:left; width: 80px;margin-bottom: 10px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;">
+                        <div align="center">
+                        <img src="img/res.png" width="30" height="30" />
+                        <br />
+                            Results
+                        </div>
+                    </div>
+                    
+                    <div class="waleed2" style="float:left; width: 80px;margin-bottom: 10px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;">
+                        <div align="center">
+                        <img src="img/plan.png" width="30" height="30" />
+                        <br />
+                            Plan
+                        </div>
+                    </div>
+                            
+                    </div>
+                    </div>
+                 <p:dialog header="Complete Your Profile" widgetVar="prof" showEffect="fade" hideEffect="fade" height="390" width="320">  
+                    <h:form enctype="multipart/form-data">
+                        
+                        <f:viewParam name="token" value="#{acc.setImgName(acc.currentUserEmail)}" />
+                    <table>
+                        
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <img src="#{acc.currentUserPPIC}" width="280" height="280" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <p:fileUpload fileUploadListener="#{acc.uploadFile}" style="font-size: 100% !important;"  
+                                mode="advanced"   
+                                update="messages"  
+                                sizeLimit="1000000000" 
+                                auto="true"
+                                allowTypes="/(\.|\/)(jpg|bmp|gif)$/"/>  
+  
+                                <p:growl id="messages" showDetail="true"/> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <div align="right">
+                                    <p:commandButton value="Complete" onclick="prof.hide();window.location='admin.xhtml';" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    </h:form>
+                </p:dialog>
+                
+            
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 10px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

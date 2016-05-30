@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ProgramListForm">
+
+        <p:panel header="#{bundle.ListProgramTitle}">
+
+            <p:dataTable id="datalist" value="#{PROGbean.programesList}" var="item"
+                         selectionMode="single" 
+                         rowKey="#{item[0]}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         widgetVar="items"
+                         >
+
+                <p:ajax event="rowSelect" listener="#{PROGbean.myEdit}"  update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" listener="#{PROGbean.myUnedit}" update="createButton viewButton editButton deleteButton"/>
+
+                   <f:facet name="header">  
+            <p:outputPanel>  
+                <p:outputLabel id="lab" for="globalFilter" value="Search:" />  
+                <p:inputText   id="globalFilter" onkeyup="items.filter()" style="width:150px" />  
+            </p:outputPanel>  
+        </f:facet>
+                
+                
+                <p:column filterMatchMode="contains" filterBy="#{item[0]}" filterStyle="display:none">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListProgramTitle_programId}"/>
+                    </f:facet>
+                    <h:outputText value="#{item[0]}"/>
+                </p:column>
+                <p:column filterMatchMode="contains" filterBy="#{item[1]}" filterStyle="display:none">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListProgramTitle_programName}"/>
+                    </f:facet>
+                    <h:outputText value="#{item[1]}"/>
+                </p:column>
+                <p:column sortBy="#{item[2]}" filterBy="#{item[2]}" rendered="false">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListProgramTitle_departmentId}"/>
+                    </f:facet>
+                    <h:outputText value="#{item[2]}"/>
+                </p:column>
+                
+                
+                  <p:column filterMatchMode="contains" filterBy="#{item[1]}" filterStyle="display:none">
+
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListProgramTitle_departmentId}"/>
+                    </f:facet>
+                     <h:outputText value="#{PROGbean.depName(item[2])}"/>
+                    
+                </p:column>
+                
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}"  update=":ProgramCreateForm" oncomplete="ProgramCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ProgramViewForm" oncomplete="ProgramViewDialog.show()"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ProgramEditForm" oncomplete="ProgramEditDialog.show()"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{PROGbean.onDelete()}" update=":ProgramListForm"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

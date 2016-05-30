@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style="" onload="#{acc.check_session('teacher')};#{q_con.setID(param.ID)};#{q_con.setQuiz(param.ID)};" >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                  <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+                
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                   <b>Name : </b> <a href="teacher.xhtml"> #{acc.currentUserName} #{acc.currentUserLastName} </a><br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+                    
+                </div> 
+                <div style="font-size: 40%; width: 180px; height: auto; margin-bottom: 5px;margin-top: -160px;margin-left: 10px;font-size: 120% !important;">
+                    <h:form>
+                        
+                    <p:panelMenu  style="font-size: 60% !important;"> 
+                    <p:submenu  label="Courses" style="font-size: 100% !important;">  
+                        <c:set var="c" value="#{course_con.teacherCourses}" />
+                        <c:set var="cid" value="#{course_con.teacherCoursesID}" />
+                            <c:forEach begin="0" end="#{course_con.teacherCourses.size()-1}" var="i">
+                            <p:menuitem value="#{c[i]}" url="teacher_course.xhtml?cid=#{cid[i]}" style="font-size: 140% !important;"/>  
+                            </c:forEach>
+                    </p:submenu>   
+                    <p:submenu label="Communicate" style="font-size: 100% !important;">      
+                        <p:menuitem value="Forums" url="forum.xhtml" style="font-size: 140% !important;"/>  
+                        <p:menuitem value="Message Inbox" url="Msg.xhtml"  style="font-size: 140% !important;"/>
+                    </p:submenu>
+                    <p:submenu label="Settings" style="font-size: 100% !important;">      
+                        <p:menuitem value="Profile"  url="profile.xhtml?ID=#{acc.currentUserId}" style="font-size: 140% !important;"/>
+                        <p:menuitem value="Change Password" url="profile_password.xhtml?ID=#{acc.currentUserId}"  style="font-size: 140% !important;"/>  
+                        <p:menuitem value="Scheduling"  url="teacher_timetable.xhtml" style="font-size: 140% !important;"/>  
+                    </p:submenu>                                                                        
+                    </p:panelMenu>
+                        
+                    </h:form>
+                </div>
+                    
+                </div>
+                </div> 
+                
+                <div class="waleed" style="float: left; width: 800px;margin-left: 20px; height: 500px; background-color: white;border-radius: 15px;margin-top: 30px;">
+                
+                    <div align="center">
+                    
+                        <div style="background-color:  #78bbe6; border-radius: 5px;"><font size="6">Quiz<br /><font size="4">New Question</font></font></div>
+                    
+                        <div align="left" style="margin-left: 20px;">  
+             <h:form>
+                 <p:growl id="msg" showDetail="false" />
+                    <table>
+                        <tr>
+                            <td>
+                                <b>Section : </b>
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{q_con.quiz.sectionId}"   disabled="true" required="true" label="Section">  
+                                    <c:set var="secs" value="#{course_con.sectionList}" />
+                                    <c:set var="secsID" value="#{course_con.sectionListID}" />
+                                    
+                                <c:forEach begin="0" end="#{course_con.sectionList.size()-1}" var="i">
+                                    <c:set var="sec" value="#{secs[i]}" />
+                                    <c:set var="secID" value="#{secsID[i]}" />
+                                    
+                                    
+                                    <f:selectItem itemLabel="#{sec}" itemValue="#{secID}" />  
+                                </c:forEach>
+                                    <p:ajax event="change" update="pret" listener="#{course_con.setTopicsAll()}" />
+                                </p:selectOneMenu> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Topic : </b>
+                            </td>
+                            <td>
+                                
+                                <c:set var="sID" value="#{q_con.quiz.sectionId}" />
+                                <f:viewParam name="token" value="#{q_con.question.setSectionId(sID)}" />                               
+                                <f:viewParam name="token" value="#{q_con.question.setCourseId(param.cid)}" />
+                                
+                                <f:viewParam name="token" value="#{q_con.question.setTopicId(quiz_con.q.topicId)}" />
+                                
+                                
+                                <p:selectOneMenu id="pret" value="#{q_con.quiz.topicId}"  disabled="true"   label="Topic">  
+                                    <c:set var="secs" value="#{course_con.topicsList}" />
+                                    <c:set var="secsID" value="#{course_con.topicsID}" />
+                                    <f:selectItem itemLabel="None" itemValue="0" />
+                                <c:forEach begin="0" end="#{course_con.topicsList.size()-1}" var="i">
+                                    <c:set var="sec" value="#{secs[i]}" />
+                                    <c:set var="secID" value="#{secsID[i]}" />
+                                    
+                                    
+                                    <f:selectItem itemLabel="#{sec}" itemValue="#{secID}" />  
+                                </c:forEach>
+                                    
+                                </p:selectOneMenu> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Statement : </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{q_con.question.statement}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Difficulty Level : </b>
+                            </td>
+                            <td>
+                                <p:selectOneMenu  value="#{q_con.question.difficultyLevel}"    label="Difficulty Level">
+                                    <f:selectItem itemLabel="High" itemValue="2" />
+                                    <f:selectItem itemLabel="Meduim" itemValue="1" />
+                                    <f:selectItem itemLabel="Low" itemValue="0" />
+                                </p:selectOneMenu> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Marks : </b>
+                            </td>
+                            <td>
+                                <p:inputMask mask="9?99" value="#{q_con.question.marks}" label="Marks" required="true" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Question Type : </b>
+                            </td>
+                            <td>
+                                <p:selectOneMenu  value="#{q_con.questionType}"    label="Difficulty Level">
+                                    <f:selectItem itemLabel="MCQ" itemValue="1" />
+                                    <f:selectItem itemLabel="True/False" itemValue="2" />
+                                    <f:selectItem itemLabel="Numarical" itemValue="3" />
+                                </p:selectOneMenu> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Marks Remaining : </b>
+                            </td>
+                            <td>
+                                #{q_con.remaining_marks}
+                            </td>
+                        </tr>
+                    </table>
+                 
+                 <hr />
+                    <div align="right">
+                        <c:if test="#{q_con.remaining_marks == 0}">
+                            <p:commandButton value="Finish"  actionListener="#{q_con.end_quiz()}"  />
+                    
+                        </c:if>   
+                    <p:commandButton value="Add Question"  actionListener="#{q_con.saveQuestionDecide()}" update="msg" />
+                    
+                    </div>
+                 
+                    </h:form> 
+                </div>
+  
+                    </div>            
+                   
+                
+                </div>
+                
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

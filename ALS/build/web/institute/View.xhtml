@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InstituteViewDlg" widgetVar="InstituteViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewInstituteTitle}">
+
+            <h:form id="InstituteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{INSbean.instituteesList != null}">
+                        
+                        <h:outputText value="#{bundle.ViewInstituteLabel_instituteId}"/>
+                        <h:outputText value="#{INSbean.modInstitute.instituteId}" title="#{bundle.ViewInstituteTitle_instituteId}"/>
+                    
+                      
+                        <h:outputText value="#{bundle.ViewInstituteLabel_instituteName}"/>
+                        <h:outputText value="#{INSbean.modInstitute.instituteName}" title="#{bundle.ViewInstituteTitle_instituteName}"/>
+                    
+                    
+                     <h:outputText value="InstituteAddress"/>
+                     <h:outputText value="#{INSbean.modInstitute.instituteAddress}" title="Address"/>
+
+                     <h:outputText value="Website"/>
+                     <h:outputText value="#{INSbean.modInstitute.instituteWebsite}" title="Website"/>
+
+                    <h:outputText value="Contactus"/>
+                    <h:outputText value="#{INSbean.modInstitute.contactUs}" title="Contactus"/>
+
+                    </p:panelGrid>
+                    
+                    <p:commandButton value="#{bundle.Close}" onclick="InstituteViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

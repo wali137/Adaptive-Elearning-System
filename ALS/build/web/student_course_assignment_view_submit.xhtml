@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       
+        
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style="" onload="#{acc.check_session('student')};#{assign.setID(param.ID)}" >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                  <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+                
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                  <b>Name : </b> <a href="student.xhtml"> #{acc.currentUserName} #{acc.currentUserLastName}</a><br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                <div class="fsize" style=" font-size: 40%; width: 180px; height: auto; margin-bottom: 5px;margin-top: -160px;margin-left: 10px;font-size: 120% !important;">
+                    <h:form>
+                    <p:panelMenu  > 
+                    <p:submenu  label="Courses" style="font-size: 100% !important;">  
+                        <c:set var="c" value="#{course_con.studentCourses}" />
+                        <c:set var="cid" value="#{course_con.studentCoursesID}" />
+                            <c:forEach begin="0" end="#{course_con.studentCourses.size()-1}" var="i">
+                            <p:menuitem value="#{c[i]}" url="student_course.xhtml?cid=#{cid[i]}" style="font-size: 130% !important;"/>  
+                            </c:forEach>
+                    </p:submenu>
+                        <p:submenu label="Actions" style="font-size: 100% !important;">
+                            <p:menuitem value="Take Course" url="student_course_take.xhtml" style="font-size: 130% !important;"/>
+                            <p:menuitem value="My Standings" url="student_standing.xhtml" style="font-size: 130% !important;"/>
+                            
+                          </p:submenu>  
+                    <p:submenu label="Communicate" style="font-size: 100% !important;">      
+                        <p:menuitem value="Forums" url="forum.xhtml" style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Message Inbox"  style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Chat" style="font-size: 130% !important;"/>   
+                    </p:submenu>
+                    <p:submenu label="Settings" style="font-size: 100% !important;">      
+                        <p:menuitem value="Profile"  url="profile.xhtml?ID=#{acc.currentUserId}" style="font-size: 130% !important;"/>
+                        <p:menuitem value="Change Password"  url="profile_password.xhtml?ID=#{acc.currentUserId}" style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Scheduling"  url="student_timetable.xhtml" style="font-size: 130% !important;"/>  
+                    </p:submenu>                                                                        
+                    </p:panelMenu> 
+                    </h:form>
+                </div>
+                    
+                </div>
+                </div>
+                
+                
+                
+                <div class="waleed" style="float: left; width: 800px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px;">
+                    <h:form>
+                        <p:growl id="messages" showDetail="false" />
+                    <div align="center">
+                    <div style="background-color:  #78bbe6; border-radius: 5px;"><font size="6">Assignment<br /><font size="4">Submissions</font></font></div>
+                    </div>
+                    
+                        <div style="margin-left: 30px;" >
+                    <table>
+                        
+                        <tr>
+                            <td>
+                                <b>Assignment Name : </b>
+                            </td>
+                            <td>
+                                #{assign.assignmentTitle}
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <b>Statement : </b>
+                            </td>
+                            <td>
+                                #{assign.statement}
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        <tr>
+                            <td>
+                                <b> Total Marks : </b>
+                            </td>
+                            <td>
+                                #{assign.marks}
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <b> Due Date : </b>
+                            </td>
+                            <td>
+                                #{assign.dueDate}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b> Attachment : </b>
+                            </td>
+                            <td>
+                                <a href="http://localhost:8080/ALS/#{assign.attachment}">Download</a>
+                            </td>
+                        </tr>
+                        
+                        
+                    </table>
+                            <hr />
+                            
+                            
+                            
+                            <table>
+                        
+                        
+                        <tr>
+                            <td>
+                                <b> Solution Statement : </b>
+                            </td>
+                            <td>
+                                <p:inputTextarea value="#{assign.sub.solutionNote}" style="width: 150px;" />
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        <tr>
+                            <td>
+                                <b> Your Attachment : </b>
+                            </td>
+                            <td>
+                                <p:fileUpload fileUploadListener="#{assign.uploadFile}" style="font-size: 100% !important;"  
+                                mode="advanced"   
+                                update="messages"  
+                                sizeLimit="1000000000" 
+                                auto="true"
+                                allowTypes="/(\.|\/)(ppt|pdf|.*)$/"/>  
+                            </td>
+                        </tr>
+                        
+                        
+                    </table>
+                            
+                            
+                            
+                        </div>
+                   
+                    
+             <hr />
+                    <div align="right">
+                        <p:commandButton value="Submit Assignment" actionListener="#{assign.submitAssignment()}" update="messages"/>
+                        <p:commandButton value="Cancel" actionListener="#{assign.cancel()}" /> 
+                    </div>                   
+                    </h:form>
+                </div>
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

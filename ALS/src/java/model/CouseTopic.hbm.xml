@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.CouseTopic" table="couse_topic" catalog="als">
+        <id name="topicId" type="java.lang.Integer">
+            <column name="topic_id" />
+            <generator class="identity" />
+        </id>
+        <property name="topicName" type="string">
+            <column name="topic_name" length="55" />
+        </property>
+        <property name="preId" type="int">
+            <column name="pre_id" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="100" not-null="true" />
+        </property>
+        <property name="sectionId" type="int">
+            <column name="section_id" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

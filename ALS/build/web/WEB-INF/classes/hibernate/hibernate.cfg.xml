@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/als?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <mapping resource="model/TeacherCourse.hbm.xml"/>
+    <mapping resource="model/Questions.hbm.xml"/>
+    <mapping resource="model/StudentNotification.hbm.xml"/>
+    <mapping resource="model/Course.hbm.xml"/>
+    <mapping resource="model/Teacher.hbm.xml"/>
+    <mapping resource="model/Department.hbm.xml"/>
+    <mapping resource="model/QuizResult.hbm.xml"/>
+    <mapping resource="model/LessonContent.hbm.xml"/>
+    <mapping resource="model/Grade.hbm.xml"/>
+    <mapping resource="model/Finalreport.hbm.xml"/>
+    <mapping resource="model/CourseDivision.hbm.xml"/>
+    <mapping resource="model/Program.hbm.xml"/>
+    <mapping resource="model/QuizSubmission.hbm.xml"/>
+    <mapping resource="model/Chat.hbm.xml"/>
+    <mapping resource="model/Answers.hbm.xml"/>
+    <mapping resource="model/Links.hbm.xml"/>
+    <mapping resource="model/Questionlevel.hbm.xml"/>
+    <mapping resource="model/Student.hbm.xml"/>
+    <mapping resource="model/Msg.hbm.xml"/>
+    <mapping resource="model/StudentRegistration.hbm.xml"/>
+    <mapping resource="model/ForumPostReply.hbm.xml"/>
+    <mapping resource="model/LessonTimming.hbm.xml"/>
+    <mapping resource="model/QuestionNumarical.hbm.xml"/>
+    <mapping resource="model/Forum.hbm.xml"/>
+    <mapping resource="model/Help.hbm.xml"/>
+    <mapping resource="model/Attachment.hbm.xml"/>
+    <mapping resource="model/CourseSection.hbm.xml"/>
+    <mapping resource="model/QuestionBlank.hbm.xml"/>
+    <mapping resource="model/CourseCategory.hbm.xml"/>
+    <mapping resource="model/ForumPost.hbm.xml"/>
+    <mapping resource="model/Notifications.hbm.xml"/>
+    <mapping resource="model/Institute.hbm.xml"/>
+    <mapping resource="model/Question.hbm.xml"/>
+    <mapping resource="model/Mcqs.hbm.xml"/>
+    <mapping resource="model/Truefalse.hbm.xml"/>
+    <mapping resource="model/Lesson.hbm.xml"/>
+    <mapping resource="model/Quiz.hbm.xml"/>
+    <mapping resource="model/QuizQuestions.hbm.xml"/>
+    <mapping resource="model/Assignment.hbm.xml"/>
+    <mapping resource="model/AssignmentResult.hbm.xml"/>
+    <mapping resource="model/CouseTopic.hbm.xml"/>
+    <mapping resource="model/Questiontype.hbm.xml"/>
+    <mapping resource="model/QuestionMcq.hbm.xml"/>
+    <mapping resource="model/Todo.hbm.xml"/>
+    <mapping resource="model/User.hbm.xml"/>
+    <mapping resource="model/AssignmentSubmission.hbm.xml"/>
+    <mapping resource="model/ChatMessage.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

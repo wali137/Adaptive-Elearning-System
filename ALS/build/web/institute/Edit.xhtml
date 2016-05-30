@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InstituteEditDlg" widgetVar="InstituteEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditInstituteTitle}">
+
+            <h:form id="InstituteEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" >
+
+                      
+
+                        <h:outputLabel value="#{bundle.EditInstituteLabel_instituteName}" for="instituteName" />
+                        <p:inputText id="instituteName" value="#{INSbean.modInstitute.instituteName}" title="#{bundle.EditInstituteTitle_instituteName}" />
+                   
+                    <h:outputLabel value="Address" for="instituteAddress" />
+                    <p:inputText id="instituteAddress" value="#{INSbean.modInstitute.instituteAddress}" title="Address" />
+                    
+                   <h:outputLabel value="Website" for="instituteWebsite" />
+                   <p:inputText id="instituteWebsite" value="#{INSbean.modInstitute.instituteWebsite}" title="Website" />
+                   
+                   <h:outputLabel value="Contactus" for="institutecontact" />
+                   <p:inputText id="institutecontact" value="#{INSbean.modInstitute.contactUs}" title="Contactus" />
+                   
+                    
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{INSbean.onUpdate()}" value="#{bundle.Save}" update="display,:InstituteListForm:datalist" oncomplete="handleSubmit(xhr,status,args,InstituteEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="InstituteEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

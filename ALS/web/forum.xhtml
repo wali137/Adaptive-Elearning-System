@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style=""  >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                  <h:form><img src="img/cover.jpg" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+                
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="img/cover.jpg" width="180" height="150" /> <br />
+                    <b>Name : </b> <a href="teacher.xhtml"> #{acc.currentUserName} #{acc.currentUserLastName} </a><br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                
+                    
+                </div>
+                </div> 
+                
+                 <div class="waleed" style="float: left; width: 800px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px;">
+            
+                
+        
+        <div class="waleed"  style="background-color: white; margin-bottom: 10px;border: 2px solid; float: right;margin-top: 30px;margin-right: 30px; width: 720px; height: auto;">
+                
+                    
+                    <h:form>
+                    <div align="center">
+                        <div class="waleed2"><font size="6">Forums</font></div>
+                    
+                        
+                        
+                        <c:set var="ff" value="#{course_con.courseList}" />
+                        <c:set var="cid" value="#{course_con.courseListID}" />
+                        <c:forEach begin="0" end="#{course_con.courseList.size()-1}" var="i">
+                        <div id ="paper" style="float: left;margin-bottom: 5px;margin-left: 10px; margin-top: 5px;border-radius: 15px; height: auto; width: 700px; background-color: #dddddd;">
+                            <div  align="left" style="float: left;margin-top: 5px;margin-left: 5px; width: 680px;"> 
+                                <img  src="img/chat.png" style="float: left;margin-top: 5px;" height="30" width="30" /> 
+                                <div style="float: left;margin-top: 10px;">
+                                    <b> #{ff[i]} </b> 
+                                </div> 
+                                <f:viewParam name="token" value="#{forum.setMostTopicsOfCourse(cid[i])}" />
+                                <div align="right" style="float: right;margin-left: 20px;margin-right: 10px;margin-top: 0px;margin-bottom: 10px;">
+                                    <p:commandButton value="View" onclick="window.location='forum_course.xhtml?ID=#{cid[i]}'" />  
+                                </div>
+                                <div style="float: right;margin-top: 10px;"><img  src="img/comment.png" height="20" width="20" />
+                                    Topics : #{forum.mostTopicsOfCourse}  
+                                </div>
+                            </div>
+                        </div>
+                        </c:forEach>
+                    </div>
+                    </h:form>
+            
+                    </div>
+    
+       
+  
+            </div> 
+                
+            <div class="waleed" style="float: left; width: 260px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                    <div style="margin-left: 10px; margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" align="center">
+                    <p:lineChart value="#{tcon.linearModel}" legendPosition="e" zoom="true" animate="true"  
+                         title="Popularity Stats" minY="0" maxY="100" style="width:240px;height:250px;" widgetVar="chart"/>  
+                    </div>
+                    
+       
+                </div>
+                
+                <div class="waleed" style="float: right; width: 260px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-right: 27px;">
+                    <div style="margin-left: 10px; margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" align="center">
+                        <font size="5">General Statistics</font>
+                        <br />
+                        <table>
+                            <tr>
+                                <td>
+                                    Most Topics of Course :
+                                </td>
+                                <td>
+                                    <b>#{forum.mostTopicsCourse}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Most Commented Topic :
+                                </td>
+                                <td>
+                                    <b>#{forum.mostCommentedTopic}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Total Topics :
+                                </td>
+                                <td>
+                                    <b>#{forum.forumList.size()}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Most Viewed Topic :
+                                </td>
+                                <td>
+                                    <b>#{forum.mostViewedTopic}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Today Comments :
+                                </td>
+                                <td>
+                                    <b>#{forum.todayComments}</b>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

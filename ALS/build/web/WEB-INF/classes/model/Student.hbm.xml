@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Student" table="student" catalog="als">
+        <id name="studentId" type="java.lang.Integer">
+            <column name="student_id" />
+            <generator class="identity" />
+        </id>
+        <property name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+        </property>
+        <property name="interest" type="string">
+            <column name="interest" length="45" />
+        </property>
+        <property name="background" type="string">
+            <column name="background" length="45" />
+        </property>
+        <property name="departmentId" type="java.lang.Integer">
+            <column name="department_id" />
+        </property>
+        <property name="qualification" type="string">
+            <column name="qualification" length="45" />
+        </property>
+        <property name="ranking" type="string">
+            <column name="ranking" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

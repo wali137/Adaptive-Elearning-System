@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CourseViewDlg" widgetVar="CourseViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewCourseTitle}">
+
+            <h:form id="CourseViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" >
+
+                        <h:outputText value="#{bundle.ViewCourseLabel_courseName}"/>
+                        <h:outputText value="#{CRSEbean.modCourse.courseName}" title="#{bundle.ViewCourseTitle_courseName}"/>
+
+                        <h:outputText value="#{bundle.ViewCourseLabel_preRequisiteId}"/>
+                        <h:outputText value="#{CRSEbean.modCourse.preRequisiteId}" title="#{bundle.ViewCourseTitle_preRequisiteId}"/>
+
+                        <h:outputText value="#{bundle.ViewCourseLabel_coRequisiteId}"/>
+                        <h:outputText value="#{CRSEbean.modCourse.coRequisiteId}" title="#{bundle.ViewCourseTitle_coRequisiteId}"/>
+
+                        <h:outputText value="#{bundle.ViewCourseLabel_creditHrs}"/>
+                        <h:outputText value="#{CRSEbean.modCourse.creditHrs}" title="#{bundle.ViewCourseTitle_creditHrs}"/>
+
+                        <h:outputText value="#{bundle.ViewCourseLabel_categoryId}"/>
+                        <h:outputText value="#{CRSEbean.modCourse.categoryId}" title="#{bundle.ViewCourseTitle_categoryId}"/>
+
+                        <h:outputText value="#{bundle.ViewCourseLabel_courseId}"/>
+                        <h:outputText value="#{CRSEbean.modCourse.courseId}" title="#{bundle.ViewCourseTitle_courseId}"/>
+                    <h:outputText value="program"/>
+                    <h:outputText value="#{CRSEbean.modCourse.program.programName}"/>
+                    
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CourseViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

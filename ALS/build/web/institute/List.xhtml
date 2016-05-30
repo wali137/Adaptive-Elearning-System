@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="InstituteListForm">
+
+        <p:panel header="#{bundle.ListInstituteTitle}">
+
+            <p:dataTable id="datalist" value="#{INSbean.instituteesList}" var="item"
+                         selectionMode="single" 
+                         rowKey="#{item[0]}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect" listener="#{INSbean.myEdit}"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" listener="#{INSbean.myUnedit}" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item[0]}" filterBy="#{item[0]}" rendered="false">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListInstituteTitle_instituteId}"/>
+                    </f:facet>
+                    <h:outputText value="#{item[0]}"/>
+                </p:column>
+                <p:column sortBy="#{item[1]}" filterBy="#{item[1]}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListInstituteTitle_instituteName}"/>
+                    </f:facet>
+                    <h:outputText value="#{item[1]}"/>
+                </p:column>
+                  <p:column sortBy="#{item[2]}" filterBy="#{item[2]}">
+                    <f:facet name="header">
+                        <h:outputText value="ListInstituteTitle_instituteAddress"/>
+                    </f:facet>
+                    <h:outputText value="#{item[2]}"/>
+                </p:column>
+                <p:column sortBy="#{item[3]}" filterBy="#{item[3]}">
+                    <f:facet name="header">
+                        <h:outputText value="ListInstituteTitle_instituteWebsite"/>
+                    </f:facet>
+                    <h:outputText value="#{item[3]}"/>
+                </p:column>
+                    <p:column sortBy="#{item[4]}" filterBy="#{item[4]}">
+                    <f:facet name="header">
+                        <h:outputText value="ListInstituteTitle_Contactus"/>
+                    </f:facet>
+                    <h:outputText value="#{item[4]}"/>
+                </p:column>
+
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{INSbean.onCreate()}" update=":InstituteCreateForm" oncomplete="InstituteCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":InstituteViewForm" oncomplete="InstituteViewDialog.show()" />
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":InstituteEditForm" oncomplete="InstituteEditDialog.show()" />
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{INSbean.onDelete()}"  />
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

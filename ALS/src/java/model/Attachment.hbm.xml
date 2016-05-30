@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Attachment" table="attachment" catalog="als">
+        <id name="attachmentId" type="java.lang.Integer">
+            <column name="attachment_id" />
+            <generator class="identity" />
+        </id>
+        <property name="type" type="string">
+            <column name="type" length="45" />
+        </property>
+        <property name="path" type="string">
+            <column name="path" length="45" />
+        </property>
+        <property name="size" type="string">
+            <column name="size" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

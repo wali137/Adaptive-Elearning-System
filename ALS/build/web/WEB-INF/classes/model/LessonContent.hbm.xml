@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.LessonContent" table="`lesson-content`" catalog="als">
+        <id name="lessonContentId" type="java.lang.Integer">
+            <column name="`lesson-content_id`" />
+            <generator class="identity" />
+        </id>
+        <property name="lessonId" type="int">
+            <column name="lesson_id" not-null="true" />
+        </property>
+        <property name="lessonPreRequisiteId" type="int">
+            <column name="`lesson-pre-requisite_id`" not-null="true" />
+        </property>
+        <property name="couseId" type="java.lang.Integer">
+            <column name="couse_id" />
+        </property>
+    </class>
+</hibernate-mapping>

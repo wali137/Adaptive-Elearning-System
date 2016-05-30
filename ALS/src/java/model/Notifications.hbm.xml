@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Notifications" table="notifications" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="courseId" type="string">
+            <column name="course_id" length="50" not-null="true" />
+        </property>
+        <property name="details" type="string">
+            <column name="details" length="100" not-null="true" />
+        </property>
+        <property name="ndate" type="date">
+            <column name="ndate" length="10" not-null="true" />
+        </property>
+        <property name="studentId" type="int">
+            <column name="Student_id" not-null="true" />
+        </property>
+        <property name="notiFor" type="string">
+            <column name="noti_for" length="100" not-null="true" />
+        </property>
+        <property name="link" type="string">
+            <column name="Link" length="500" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Questions" table="questions" catalog="als">
+        <id name="questionId" type="java.lang.Integer">
+            <column name="question_id" />
+            <generator class="identity" />
+        </id>
+        <property name="levelId" type="int">
+            <column name="level_id" not-null="true" />
+        </property>
+        <property name="question" type="string">
+            <column name="question" length="45" />
+        </property>
+        <property name="questionText" type="string">
+            <column name="question_text" length="45" />
+        </property>
+        <property name="timeCreated" type="time">
+            <column name="time_created" length="8" />
+        </property>
+        <property name="marks" type="java.lang.Integer">
+            <column name="marks" />
+        </property>
+        <property name="typeId" type="int">
+            <column name="type_id" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

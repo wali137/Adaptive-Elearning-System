@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Help" table="help" catalog="als">
+        <id name="helpId" type="java.lang.Integer">
+            <column name="help_id" />
+            <generator class="identity" />
+        </id>
+        <property name="studentId" type="int">
+            <column name="student_id" not-null="true" />
+        </property>
+        <property name="topic" type="string">
+            <column name="topic" length="45" />
+        </property>
+        <property name="linkId" type="int">
+            <column name="link_id" not-null="true" />
+        </property>
+        <property name="scrollDiv" type="string">
+            <column name="scroll_div" length="45" />
+        </property>
+        <property name="courseId" type="int">
+            <column name="course_id" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

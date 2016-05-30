@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.CourseSection" table="course_section" catalog="als">
+        <id name="sectionId" type="java.lang.Integer">
+            <column name="section_id" />
+            <generator class="identity" />
+        </id>
+        <property name="sectionName" type="string">
+            <column name="section_name" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="500" />
+        </property>
+        <property name="courseId" type="string">
+            <column name="course_id" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

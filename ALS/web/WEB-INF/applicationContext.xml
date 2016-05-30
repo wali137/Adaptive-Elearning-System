@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!--bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/jdbc.properties" />
+
+<bean id="dataSource"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+    p:driverClassName="${jdbc.driverClassName}"
+    p:url="${jdbc.url}"
+    p:username="${jdbc.username}"
+    p:password="${jdbc.password}" /-->
+
+    <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+    
+    <bean id="forum" class="controller.ForumController">
+        
+    </bean>
+    
+    
+    <bean id="lst" class="controller.OrderListBean">
+        
+    </bean>
+    
+    <bean id="assign" class="controller.AssignmentController">
+        
+    </bean>
+    
+    <bean id="acc" class="controller.user_controller">
+        
+    </bean>
+    
+    <bean id="tcon" class="controller.teacherController">
+        
+    </bean>
+    
+    <bean id="course_con" class="controller.Course_Controller">
+        
+    </bean>
+    
+    <bean id="todo_con" class="controller.todo_Controller">
+        
+    </bean>
+    
+    <bean id="admin_con" class="controller.admin_Controller">
+        
+    </bean>
+    
+    <bean id="q_con" class="controller.Question_Controller">
+        
+    </bean>
+    
+    <bean id="quiz_con" class="controller.Quiz_Controller">
+        
+    </bean>
+
+    <bean id="stdnt" class="controller.StudentController">
+        
+    </bean>
+
+    <bean id="profile" class="controller.Profile_Controller">
+        
+    </bean>
+
+    <bean id="msg" class="controller.Msg_Controller">
+        
+    </bean>
+    
+    <bean id="pdf" class="controller.PDF_Controller">
+        
+    </bean>
+    
+    <bean id="lesson" class="controller.Lesson_Controller">
+        
+    </bean>
+
+    <bean id="scheduleController" class="controller.ScheduleController">
+        
+    </bean>
+    
+    <bean id="perform" class="controller.performance_Controller">
+        
+    </bean>
+    
+    
+        <bean id="INSbean" class="controller.InstituteController" />
+        <bean id="PROGbean" class="controller.ProgramController" />
+        <bean id="CRSEbean" class="controller.CourseController" />       
+        <bean id="editbean" class="controller.EditController" />       
+        <bean id="editdepbean" class="controller.EditDepController" />       
+        <bean id="stchartBean" class="controller.StudentQuizGraph" /> 
+        <bean id="chartBean" class="controller.Graph" /> 
+        <bean id="crreg" class="controller.registercourseController" /> 
+        <bean id="slist" class="controller.StudentListController" />
+        
+        <bean id="bays" class="learners.main.alsBayse"/>   
+        
+        
+        
+</beans>

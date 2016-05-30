@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 70% !important;
+        }
+        
+       </style>
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style="" onload="#{acc.check_session('student')};#{course_con.setCourseID(param.cid)};#{stchartBean.setCID(param.cid)}" >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                  <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+            <f:viewParam name="token" value="#{stchartBean.setSID(acc.currentUserId)}" />
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                   <b>Name : </b> <a href="student.xhtml"> #{acc.currentUserName} #{acc.currentUserLastName}</a><br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                <div class="fsize" style=" font-size: 40%; width: 180px; height: auto; margin-bottom: 5px;margin-top: -160px;margin-left: 10px;font-size: 120% !important;">
+                    <h:form>
+                    <p:panelMenu  > 
+                    <p:submenu  label="Courses" style="font-size: 100% !important;">  
+                        <c:set var="c" value="#{course_con.studentCourses}" />
+                        <c:set var="cid" value="#{course_con.studentCoursesID}" />
+                            <c:forEach begin="0" end="#{course_con.studentCourses.size()-1}" var="i">
+                            <p:menuitem value="#{c[i]}" url="student_course.xhtml?cid=#{cid[i]}" style="font-size: 130% !important;"/>  
+                            </c:forEach>
+                    </p:submenu>
+                        <p:submenu label="Actions" style="font-size: 100% !important;">
+                            <p:menuitem value="Take Course" url="student_course_take.xhtml" style="font-size: 130% !important;"/>
+                            <p:menuitem value="My Standings" url="student_standing.xhtml" style="font-size: 130% !important;"/>
+                            
+                          </p:submenu>  
+                    <p:submenu label="Communicate" style="font-size: 100% !important;">      
+                        <p:menuitem value="Forums" url="forum.xhtml" style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Message Inbox"  style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Chat" style="font-size: 130% !important;"/>   
+                    </p:submenu>
+                    <p:submenu label="Settings" style="font-size: 100% !important;">      
+                        <p:menuitem value="Profile"  url="profile.xhtml?ID=#{acc.currentUserId}" style="font-size: 130% !important;"/>
+                        <p:menuitem value="Change Password"  url="profile_password.xhtml?ID=#{acc.currentUserId}" style="font-size: 130% !important;"/>  
+                        <p:menuitem value="Scheduling"  url="student_timetable.xhtml" style="font-size: 130% !important;"/>  
+                    </p:submenu>                                                                        
+                    </p:panelMenu> 
+                    </h:form>
+                </div>
+                </div>
+                </div> 
+                
+                
+                
+                <f:viewParam name="token" value="#{stchartBean.createLinearModel3()}" />
+                
+                
+                
+                
+                <div class="waleed" style="float: left; width: 700px;margin-left: 20px; height: 610px; background-color: white;border-radius: 15px;margin-top: 30px;">
+                                    
+                        <h:form>
+                            
+                    <div align="center">
+                        <div style="background-color:  #78bbe6; border-radius: 5px;"><font size="6">#{course_con.courseName}</font></div>
+                    <table>
+                        
+                        <tr>
+                            <td>
+                                <b>Course Code</b>
+                            </td>
+                            <td>
+                                #{param.cid}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Department </b> 
+                            </td>
+                            <td>
+                                #{course_con.courseDpt}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Program </b> 
+                            </td>
+                            <td>
+                                #{course_con.courseProgram}
+                            </td>
+                        </tr>
+                      
+                        
+                        
+                    </table>
+                    </div>
+                    
+                    <hr />
+                    
+                   
+                        <div id ="paper" style="margin-top: 5px;border-radius: 15px; height: auto; width: 480px; background-color: #dddddd;">
+                            <div style="margin-top: 5px;margin-left: 5px;"> <img  src="img/quiz.png" height="30" width="30" /> <b> Course's Quiz </b>  <div align="right" style="margin-right: 10px;margin-top: -20px;margin-bottom: 10px;"><p:commandButton value="View" actionListener="#{course_con.student_QuizView()}"/></div></div>
+                        </div>
+                        
+                       
+                        <div id ="paper" style="margin-top: 5px;border-radius: 15px; height: auto; width: 480px; background-color: #dddddd;">
+                        <div style="margin-top: 5px;margin-left: 5px;"> <img  src="img/assign_check.png" height="30" width="30" /> <b> Course's Assignments </b>  <div align="right" style="margin-right: 10px;margin-top: -20px;margin-bottom: 10px;"><p:commandButton value="View" actionListener="#{course_con.student_AssignmentView()}" /></div></div>
+                        </div>
+                        
+                        
+                        <div id ="paper" style="margin-top: 5px;border-radius: 15px; height: auto; width: 480px; background-color: #dddddd;">
+                        <div style="margin-top: 5px;margin-left: 5px;"> <img  src="img/book.png" height="30" width="30" /> <b> Learning Plan </b>  <div align="right" style="margin-right: 10px;margin-top: -20px;margin-bottom: 10px;"><p:commandButton value="View" onclick="window.location='student_course_performace.xhtml?cid=#{param.cid}'" /></div></div>
+                        </div>
+                        
+                        <div id ="paper" style="margin-top: 5px;border-radius: 15px; height: auto; width: 480px; background-color: #dddddd;">
+                        <div style="margin-top: 5px;margin-left: 5px;"> <img  src="img/plan.png" height="30" width="30" /> <b> Attend Lesson </b>  <div align="right" style="margin-right: 10px;margin-top: -20px;margin-bottom: 10px;"><p:commandButton value="View" onclick="window.location='student_course_lesson_view.xhtml?cid=#{param.cid}'" /> </div></div>
+                        </div>
+                    
+                    
+                    
+                    
+                       
+                                        
+                    
+                        
+                   
+                    </h:form>
+               
+
+                              <div class="waleed" style="float: left; width: 360px; height: auto; background-color: white;border-radius: 15px;margin-left: 710px;margin-top: -395px;">
+                    <div style="margin-left: 10px; margin-right: 10px;margin-top: 10px;margin-bottom: 10px;" align="center">
+                        <div align="left" >
+                    <p:tabMenu activeIndex="0">  
+                    <p:menuitem value="General Statistics" url="#" icon="ui-icon-star"/>   
+                    </p:tabMenu> 
+                            <div style="margin-left: 10px; margin-top: 10px;">
+                        
+                        <h:panelGrid columns="2">  
+                        <p:barChart  id="basic3" value="#{stchartBean.linearModel3}" legendPosition="e"  
+                            title="Course Progress"   min="0" max="100" style="width:300px;height:240px;" animate="true"/>  
+                        
+                       
+                        </h:panelGrid>
+                                <div align="center">
+                                <p:commandButton value="Predict by Agent" actionListener="#{course_con.agentPredict()}" oncomplete="dlg2.show();" />
+                                </div>
+                                
+                                
+                                       <p:dialog id="d2" widgetVar="dlg2" header="Agent Prediction" >
+                        <table>
+                            
+                            <tr>
+                                <td><b>predicted Performance: </b></td> <td>#{course_con.finalprediction}</td>
+                            </tr>
+                        </table>
+                    </p:dialog>
+                     </div> 
+                        </div>
+                        
+                        <br />
+                    
+                        
+                        <br />
+                        
+                        
+                        
+                        
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

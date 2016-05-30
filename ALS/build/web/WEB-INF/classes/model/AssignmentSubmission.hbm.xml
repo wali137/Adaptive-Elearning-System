@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.AssignmentSubmission" table="assignment_submission" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="submittedBy" type="int">
+            <column name="Submitted_By" not-null="true" />
+        </property>
+        <property name="submissionDate" type="date">
+            <column name="Submission_Date" length="10" not-null="true" />
+        </property>
+        <property name="submissionTime" type="time">
+            <column name="Submission_Time" length="8" not-null="true" />
+        </property>
+        <property name="attachment" type="string">
+            <column name="Attachment" length="100" not-null="true" />
+        </property>
+        <property name="solutionNote" type="string">
+            <column name="Solution_Note" length="3000" not-null="true" />
+        </property>
+        <property name="assignmentId" type="int">
+            <column name="Assignment_ID" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

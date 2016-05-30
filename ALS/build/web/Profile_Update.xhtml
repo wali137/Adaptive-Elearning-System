@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style="" onload="#{profile.setUserID(param.ID)};" >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                  <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+                
+            
+            
+            
+            <font color="black">
+            <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                    <b>Name : </b> #{acc.currentUserName} #{acc.currentUserLastName}<br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                
+                    
+                </div>
+                </div> 
+                
+                <div class="waleed" style="float: left; width: 800px;margin-left: 20px; height: 500px; background-color: white;border-radius: 15px;margin-top: 30px;">
+                
+                    <f:viewParam name="token" value="#{profile.initModel()}" />
+                    <h:form enctype="multipart/form-data">
+                    <div align="center">
+                        <div style="background-color:  #78bbe6; border-radius: 5px;"><font size="6">Profile (Update)</font></div>
+                        <div align="left" style="margin-left: 10px;">
+                            <div style="float: left;">
+                            <img src="#{profile.image}" height="200" width="200" />
+                            <br />
+                             
+                    <p:growl id="growl2" showDetail="false" life="3000" />
+                    
+                    <f:viewParam name="token" value="#{acc.setLogged_id(param.ID)}" />
+                    <f:viewParam name="token" value="#{profile.setUsertype(acc.logged_usertype)}" />
+                    <f:viewParam name="token" value="#{profile.setUsername(acc.logged_username)}" />
+                    <f:viewParam name="token" value="#{profile.setPassword(acc.logged_password)}" />
+                    <f:viewParam name="token" value="#{acc.setImgName(acc.logged_username)}" />
+                    
+                                <p:fileUpload fileUploadListener="#{acc.uploadFile}" style="font-size: 100% !important;"  
+                                mode="advanced"   
+                                update="messages"  
+                                sizeLimit="1000000000" 
+                                auto="true"
+                                allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>  
+  
+                                <p:growl id="messages" showDetail="true"/> 
+
+                    
+                            </div>
+                            
+                            <div style="margin-left: 10px;float: left;">
+                        <table>
+                        <tr>
+                            <td>
+                                <b>First Name : </b>
+                            </td>
+                            <td>
+                                
+                                <p:inputText value="#{profile.u.firstName}" label="First Name" required="true" />
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <b>Last Name : </b>
+                            </td>
+                            <td>
+                                
+                                <p:inputText value="#{profile.u.lastName}" label="Last Name" required="true" />
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td>
+                                <b>Gender : </b>
+                            </td>
+                            <td>
+                                
+                                <p:inputText value="#{profile.u.gender}" label="Gender" required="true" />
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td>
+                                <b>Date of Birth : </b>
+                            </td>
+                            <td>
+                           
+                                <p:calendar yearRange="1990-2030" value="#{profile.u.dob}" label="Date of Birth"  />
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td>
+                                <b>Address : </b>
+                            </td>
+                            <td>
+                           
+                                <p:inputText value="#{profile.u.address}" label="Address" required="true" />
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td>
+                                <b>Email : </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{profile.u.email}" label="Email" required="true" />
+                            </td>
+                        </tr>
+                                
+                        <tr>
+                            <td>
+                                <b>Language : </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{profile.u.language}" label="Language" required="true" />
+                            </td>
+                        </tr>
+                                
+                        <tr>
+                            <td>
+                                <b>Contact : </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{profile.u.phoneNumber}" label="Contact" required="true" />
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td>
+                                <b>Hobby : </b>
+                            </td>
+                            <td>
+                                <p:inputText value="#{profile.u.hobby}" label="Hobby" required="true" />
+                            </td>
+                        </tr>
+                                
+                            
+                    </table>
+                        </div>
+                        </div>
+                    </div>
+                        
+                        <div align="right" style="margin-left: 20px;margin-right: 20px; margin-top: 280px;">
+                            <hr />
+                            <p:commandButton value="Save" actionListener="#{profile.update()}"/>
+                        </div>
+                    </h:form>
+                    </div>
+  
+           
+                
+            
+             
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>

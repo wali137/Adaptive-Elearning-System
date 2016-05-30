@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.ChatMessage" table="chat_message" catalog="als">
+        <id name="messageId" type="java.lang.Integer">
+            <column name="message_id" />
+            <generator class="identity" />
+        </id>
+        <property name="chatId" type="int">
+            <column name="chat_id" not-null="true" />
+        </property>
+        <property name="userId" type="int">
+            <column name="user_id" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

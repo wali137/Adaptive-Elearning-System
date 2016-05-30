@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Program" table="program" catalog="als">
+        <id name="programId" type="java.lang.Integer">
+            <column name="program_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="department" class="model.Department" fetch="select">
+            <column name="department_id" />
+        </many-to-one>
+        <property name="programName" type="string">
+            <column name="program_name" length="45" />
+        </property>
+        <set name="courses" inverse="true">
+            <key>
+                <column name="program_id" />
+            </key>
+            <one-to-many class="model.Course" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Institute" table="institute" catalog="als">
+        <id name="instituteId" type="java.lang.Integer">
+            <column name="institute_id" />
+            <generator class="identity" />
+        </id>
+        <property name="instituteName" type="string">
+            <column name="institute_name" length="45" />
+        </property>
+        <property name="instituteAddress" type="string">
+            <column name="institute_address" length="45" />
+        </property>
+        <property name="instituteWebsite" type="string">
+            <column name="institute_website" length="45" />
+        </property>
+        <property name="contactUs" type="string">
+            <column name="contact_us" length="45" />
+        </property>
+        <set name="departments" inverse="true">
+            <key>
+                <column name="institute_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Department" />
+        </set>
+    </class>
+</hibernate-mapping>

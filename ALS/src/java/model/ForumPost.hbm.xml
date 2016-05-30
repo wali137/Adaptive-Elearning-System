@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.ForumPost" table="forum_post" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="forumId" type="java.lang.Integer">
+            <column name="Forum_ID" />
+        </property>
+        <property name="postText" type="string">
+            <column name="Post_Text" length="1000" />
+        </property>
+        <property name="postDate" type="date">
+            <column name="Post_Date" length="10" />
+        </property>
+        <property name="postTime" type="time">
+            <column name="Post_Time" length="8" />
+        </property>
+        <property name="userId" type="java.lang.Integer">
+            <column name="User_ID" />
+        </property>
+    </class>
+</hibernate-mapping>

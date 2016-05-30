@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CourseCreateDlg" widgetVar="CourseCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateCourseTitle}">
+
+            <h:form id="CourseCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" >
+
+                        <h:outputLabel value="#{bundle.CreateCourseLabel_courseName}" for="courseName" />
+                        <p:inputText id="courseName" value="#{CRSEbean.course.courseName}" title="#{bundle.CreateCourseTitle_courseName}" />
+
+                        <h:outputLabel value="#{bundle.CreateCourseLabel_preRequisiteId}" for="preRequisiteId" />
+                        <p:inputText id="preRequisiteId" value="#{CRSEbean.course.preRequisiteId}" title="#{bundle.CreateCourseTitle_preRequisiteId}" />
+
+                        <h:outputLabel value="#{bundle.CreateCourseLabel_coRequisiteId}" for="coRequisiteId" />
+                        <p:inputText id="coRequisiteId" value="#{CRSEbean.course.coRequisiteId}" title="#{bundle.CreateCourseTitle_coRequisiteId}" />
+
+                        <h:outputLabel value="#{bundle.CreateCourseLabel_creditHrs}" for="creditHrs" />
+                        <p:inputText id="creditHrs" value="#{CRSEbean.course.creditHrs}" title="#{bundle.CreateCourseTitle_creditHrs}" />
+
+                        <h:outputLabel value="#{bundle.CreateCourseLabel_categoryId}" for="categoryId" />
+                        <p:inputText id="categoryId" value="#{CRSEbean.course.categoryId}" title="#{bundle.CreateCourseTitle_categoryId}" />
+
+                        <h:outputLabel value="#{bundle.CreateCourseLabel_courseId}" for="courseId" />
+                        <p:inputText id="courseId" value="#{CRSEbean.course.courseId}" title="#{bundle.CreateCourseTitle_courseId}" required="true" requiredMessage="#{bundle.CreateCourseRequiredMessage_courseId}"/>
+                    
+                        <h:outputLabel value="#{bundle.CreateProgramLabel_programId}" for="programId" />
+                        <p:selectOneMenu  value="#{CRSEbean.course.program.programId}" effect="fade" id="programId" >
+                         <f:selectItems value="#{PROGbean.getlist()}"/>
+                           </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{courseController.saveNew}" value="#{bundle.Save}" update="display,:CourseListForm:datalist" oncomplete="CourseCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CourseCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

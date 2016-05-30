@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        
+        <style type="text/css">
+        .ui-widget,.ui-widget .ui-widget {
+            font-size: 80% !important;
+        }
+        
+       </style>
+       
+        
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/themes/Cupertino/skin.css"/>
+       <link type="text/css" rel="stylesheet" href="css/my.css"/>
+       
+    </h:head>
+    <h:body style="" onload="#{assign.setCid(param.cid)};#{acc.check_session('admin')};#{assign.setCourse_id(param.cid)};#{course_con.setCourseID(param.cid)};" >
+        <font color="black">
+        
+        <div class="heading" style="border-radius: 15px; float:left;background-color: black; width: 100%; height: 60px;">
+            <div style="float: left;margin-left: 10px; ">
+                <img src="img/logo.png" width="50" height="50" align="left"/> <div style="float: left; margin: -10px;margin-left: 5px;"><h2>Adaptive Learning System</h2></div>
+            </div>
+            <!--
+            <div style="margin-top: 10px;float: left; margin-left: 700px;">
+                <img src="img/chat.png" width="25" height="25" />
+                <font size="5"> 3 </font>
+            </div> 
+            -->
+            <div style="float: right; margin-top: 10px; margin-right: 10px;">
+                  <h:form><img src="#{acc.currentUserPPIC}" width="20" height="20" /><b> Welcome, #{acc.currentUserName}  </b> <p:commandButton  value="Logout"  actionListener="#{acc.logout()}" ></p:commandButton> </h:form>
+            </div>
+        </div>
+        
+            
+                
+            
+            
+            
+            <font color="black">
+                         <div class="waleed" style="float: left; width: 200px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px; margin-left: 20px;">
+                
+                <div style="float: left;margin-bottom: 10px;">
+                <div style=" width: 180px; height: 400px;margin-top: 30px;margin-left: 10px;">
+                    <img src="#{acc.currentUserPPIC}" width="180" height="150" /> <br />
+                    <b>Name : </b> #{acc.currentUserName} #{acc.currentUserLastName}<br />
+                    <b>Email : </b> #{acc.currentUserEmail} <br />
+      
+                    
+                </div> 
+                <div class="fsize" style="font-size: 40%; width: 180px; height: auto; margin-bottom: 5px;margin-top: -160px;margin-left: 10px;font-size: 120% !important;">
+                    <h:form>
+                    <p:panelMenu > 
+                    
+                    <p:submenu label="institute" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create" url="AddInstitute.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Edit" url="editins.xhtml" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+                        
+                    <p:submenu label="department" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create" url="AddDepartment.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Edit" url="EditDep.xhtml" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+
+                    <p:submenu label="Program" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create" url="AddProgram.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Edit" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+
+                    <p:submenu label="Course" style="font-size: 100% !important;">      
+                    <p:menuitem value="Manage" url="admin_course.xhtml" style="font-size: 150% !important;"/>  
+                    </p:submenu>
+    
+                    <p:submenu label="Teacher" style="font-size: 100% !important;">      
+                    <p:menuitem value="Create"  url="admin_teacher.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Assign" url="admin_teacher_assign.xhtml" style="font-size: 150% !important;"/>                                                
+                    </p:submenu>
+                        
+                    <p:submenu label="Communicate" style="font-size: 100% !important;">      
+                    <p:menuitem value="Forums" url="forum.xhtml" style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Message Inbox" url="Msg.xhtml"  style="font-size: 150% !important;"/>  
+                    <p:menuitem value="Chat" style="font-size: 150% !important;"/>   
+                    </p:submenu>
+                        
+                    <p:submenu label="Settings" style="font-size: 100% !important;">      
+                    <p:menuitem value="Profile"  url="profile.xhtml?ID=#{acc.currentUserId}" style="font-size: 150% !important;"/>
+                    <p:menuitem value="Change Password" url="profile_password.xhtml?ID=#{acc.currentUserId}"  style="font-size: 150% !important;"/>  
+                        
+                    </p:submenu>
+                        
+                        
+                        
+                    </p:panelMenu> 
+                    </h:form>
+                </div>
+                    
+                </div>
+                </div>
+                
+                
+                
+                <div class="waleed" style="float: left; width: 1000px;margin-left: 20px; height: auto; background-color: white;border-radius: 15px;margin-top: 30px;">
+                  
+                        
+                    <div align="center">
+                    <div style="background-color:  #78bbe6; border-radius: 5px;"><font size="6">Edit<br /><font size="4">Department</font></font></div>
+                    </div>
+                        <div align="center">
+                            
+                            
+        
+        <h:form id="form">
+            <p:growl id="messages" showDetail="false" />
+        <p:dataTable  paginator="true" rows="5"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15" id="doclist"  resizableColumns="true"  value="#{editdepbean.pdep}" var="doclist" selection="#{editdepbean.dep}" selectionMode="single" rowKey="#{doclist.departmentId}" >
+                                 
+            <p:ajax event="rowSelect" listener="#{editdepbean.onRowSelect}" update=":form" oncomplete="dlg.show()"  />          
+                                        <p:ajax event="rowUnselect" listener="#{editdepbean.onRowUnSelect}" update=":form"/> 
+                                       
+                                        <p:column  headerText="Name" >  
+                                            <p:cellEditor>  
+                                                <f:facet name="output">
+                                                    <h:outputText value="#{doclist.departmentName}" />
+                                                   
+                                                    </f:facet>  
+                                                <f:facet name="input">  
+                                                    
+                                                    <p:inputText value="#{doclist.departmentName}" />
+                                                    </f:facet>  
+                                            </p:cellEditor>  
+                                        </p:column> 
+                                         <p:column headerText="Detail">  
+                                            <p:cellEditor>   
+                                                <f:facet name="output">  
+                                                    <h:outputText value="#{doclist.description}" />  
+                                                </f:facet>  
+                                                <f:facet name="input">  
+                                                    <p:inputText value="#{doclist.description}"/>  
+                                                </f:facet>  
+                                            </p:cellEditor>  
+                                        </p:column>
+                                        
+                                        <p:column headerText="Institute name">  
+                                            <p:cellEditor>   
+                                                <f:facet name="output">  
+                                                    <h:outputText value="#{doclist.institute.instituteName}" />  
+                                                </f:facet>  
+                                                <f:facet name="input">  
+                                                    <p:inputText value="#{doclist.institute.instituteName}"/>  
+                                                </f:facet>  
+                                            </p:cellEditor>  
+                                        </p:column>
+                                        
+        
+        </p:dataTable> 
+             <p:dialog id="dialog" header="Edit department Details" widgetVar="dlg" showEffect="fade" hideEffect="explode" resizable="false">  
+  
+        <h:panelGrid columns="2" cellpadding="5">  
+            <h:outputLabel for="name" value="departmentName:" />  
+                                       
+            <p:inputText   value="#{editdepbean.dep.departmentName}" id="name"/>
+            
+            <h:outputLabel for="description" value="Institutedescrition:" />  
+            
+            <p:inputText   value="#{editdepbean.dep.description}" id="description"/>
+            
+                    <h:outputLabel value="Inst Name" for="instname" />
+                    <p:selectOneMenu  value="#{editdepbean.dep.institute.instituteId}" effect="fade" id="instname" >
+                          
+                        <f:selectItems value="#{INSbean.ins}" var="ins" itemLabel="#{ins.instituteName}" itemValue="#{ins.instituteName}"/>
+                           </p:selectOneMenu>                     
+                                  
+           
+              
+            <f:facet name="footer">  
+                <p:commandButton id="ehos" value="Save" oncomplete="confrm.show()"/>  
+            </f:facet>  
+        </h:panelGrid>  
+          
+    </p:dialog>  
+            
+
+             <p:confirmDialog id="confirmDialog" message="Are you sure about Updating the department Data? "  
+                header="Update Confirmation" severity="alert" widgetVar="confrm">  
+                  
+                       <p:commandButton id="confirm" value="Yes Sure" update=":form"  oncomplete="confrm.hide()"  
+                                        actionListener="#{editdepbean.updateDepartment(action)}" />  
+        <p:commandButton id="decline" value="Not Now" onclick="confrm.hide()"  />   
+                  
+    </p:confirmDialog>
+              </h:form>
+</div>
+                        
+           
+                </div>
+            </font>
+            
+            <div class="heading" style="float:left;background-color: black; width: 100%; height: 40px;margin-top: 30px;" >
+                    <div align="center" style="margin-top: 10px;">All Rights Reserved, Copyright(c) 2013 - <b>FYP Project</b></div>
+                </div>
+        
+        </font>
+    </h:body>
+</html>
+

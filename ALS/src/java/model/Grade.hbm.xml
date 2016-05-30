@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Grade" table="grade" catalog="als">
+        <id name="gradeId" type="java.lang.Integer">
+            <column name="grade_id" />
+            <generator class="identity" />
+        </id>
+        <property name="letterGrade" type="java.lang.Character">
+            <column name="letter_grade" length="1" />
+        </property>
+        <property name="range" type="string">
+            <column name="range" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

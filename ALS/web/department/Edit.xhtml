@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DepartmentEditDlg" widgetVar="DepartmentEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditDepartmentTitle}">
+
+            <h:form id="DepartmentEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2">
+
+                        
+                          <h:outputLabel value="#{bundle.EditDepartmentLabel_instituteId}" for="instituteId" />
+                    <p:selectOneMenu value="#{DEPbean.modDepartment.instituteId}" effect="fade" id="instituteId">  
+        
+
+                             <f:selectItems value="#{DEPbean.getlist()}" var="city" />  
+        
+                            </p:selectOneMenu>
+                        
+                        
+                        <h:outputLabel value="#{bundle.EditDepartmentLabel_departmentId}" for="departmentId" />
+                        <h:outputText id="departmentId" value="#{DEPbean.modDepartment.departmentId}" />
+
+                        <h:outputLabel value="#{bundle.EditDepartmentLabel_departmentName}" for="departmentName" />
+                        <p:inputText id="departmentName" value="#{DEPbean.modDepartment.departmentName}" title="#{bundle.EditDepartmentTitle_departmentName}" />
+
+                        
+                    
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{DEPbean.onUpdate()}" value="#{bundle.Save}" update="display,:DepartmentListForm:datalist" oncomplete="DepartmentEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DepartmentEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Forum" table="forum" catalog="als">
+        <id name="forumId" type="java.lang.Integer">
+            <column name="forum_id" />
+            <generator class="identity" />
+        </id>
+        <property name="forumName" type="string">
+            <column name="forum_name" length="45" />
+        </property>
+        <property name="courseId" type="string">
+            <column name="course_id" length="100" />
+        </property>
+        <property name="dateCreated" type="date">
+            <column name="date_created" length="10" />
+        </property>
+        <property name="views" type="java.lang.Integer">
+            <column name="Views" />
+        </property>
+        <property name="comments" type="java.lang.Integer">
+            <column name="comments" />
+        </property>
+        <property name="createdBy" type="java.lang.Integer">
+            <column name="created_by" />
+        </property>
+        <property name="details" type="string">
+            <column name="details" length="1000" />
+        </property>
+    </class>
+</hibernate-mapping>

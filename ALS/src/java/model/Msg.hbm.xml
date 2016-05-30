@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Msg" table="msg" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="toId" type="int">
+            <column name="toID" not-null="true" />
+        </property>
+        <property name="fromId" type="int">
+            <column name="fromID" not-null="true" />
+        </property>
+        <property name="sentDate" type="date">
+            <column name="sentDate" length="10" not-null="true" />
+        </property>
+        <property name="sentTime" type="time">
+            <column name="sentTime" length="8" not-null="true" />
+        </property>
+        <property name="sentMessage" type="string">
+            <column name="sentMessage" length="3000" />
+        </property>
+        <property name="replyId" type="java.lang.Integer">
+            <column name="reply_id" />
+        </property>
+        <property name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+        </property>
+    </class>
+</hibernate-mapping>

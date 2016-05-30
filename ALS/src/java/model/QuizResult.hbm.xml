@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2013 3:04:47 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.QuizResult" table="quiz_result" catalog="als">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="quizSubmissionId" type="java.lang.Integer">
+            <column name="quiz_submission_id" />
+        </property>
+        <property name="totakMarks" type="java.lang.Integer">
+            <column name="totak_marks" />
+        </property>
+        <property name="marksObtained" type="java.lang.Integer">
+            <column name="marks_obtained" />
+        </property>
+        <property name="studentId" type="java.lang.Integer">
+            <column name="Student_ID" />
+        </property>
+        <property name="feedback" type="string">
+            <column name="Feedback" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>
